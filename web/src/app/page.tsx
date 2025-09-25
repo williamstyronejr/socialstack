@@ -1,103 +1,129 @@
-import Image from "next/image";
+import LandingHeader from "@/components/landing/LandingHeader";
+import LandingFooter from "@/components/landing/Footer";
+import { Link } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <LandingHeader />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <section className="relative overflow-hidden py-20 md:py-32 max-w-7xl mx-auto">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="mx-auto max-w-4xl text-center">
+            <h1 className="mb-6 text-4xl font-black tracking-tight text-balance md:text-6xl lg:text-7xl">
+              Manage Your Social Media{" "}
+              <span className="text-accent">Like a Pro</span>
+            </h1>
+
+            <p className="mb-8 text-lg text-muted-foreground text-pretty md:text-xl lg:text-2xl">
+              Join forces with your team to create captivating content.
+              Streamline your social media management across all platforms with
+              powerful collaboration tools designed for creators.
+            </p>
+
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="/signup"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8"
+              >
+                Start Your Free Trial
+              </Link>
+              <Link href="/demo" className="">
+                Watch Demo
+              </Link>
+            </div>
+
+            <div className="mt-12 text-sm text-muted-foreground">
+              No credit card required • 14-day free trial • Cancel anytime
+            </div>
+          </div>
+
+          <div className="mt-16 relative">
+            <div className="mx-auto max-w-5xl">
+              <div className="relative rounded-xl border bg-card p-2 shadow-2xl">
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-background/20 to-transparent" />
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section className="py-20 bg-accent/5 max-w-7xl mx-auto">
+        <div className="container px-4 md:px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="text-3xl font-black tracking-tight text-balance md:text-4xl lg:text-5xl mb-6">
+              Ready to elevate your{" "}
+              <span className="text-accent">social media game?</span>
+            </h2>
+            <p className="text-lg text-muted-foreground text-pretty mb-8 md:text-xl">
+              Join thousands of creators who are already using CreatorHub to
+              streamline their social media management and grow their audience
+              faster than ever.
+            </p>
+
+            {/* <div className="flex flex-wrap justify-center gap-6 mb-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-accent" />
+                <span className="text-sm font-medium">{benefit}</span>
+              </div>
+            ))}
+          </div> */}
+
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="/signup"
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8"
+              >
+                Start Your Free Trial
+              </Link>
+
+              <Link href="/demo" className="text-base px-8 bg-transparent">
+                Schedule a Demo
+              </Link>
+            </div>
+
+            <p className="mt-6 text-sm text-muted-foreground">
+              Over 10,000+ creators trust CreatorHub with their social media
+              management
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" className="py-20 bg-muted/30 max-w-7xl mx-auto">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="mx-auto max-w-2xl text-center mb-16">
+            <h2 className="text-3xl font-black tracking-tight text-balance md:text-4xl lg:text-5xl">
+              Everything you need to{" "}
+              <span className="text-accent">scale your presence</span>
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground text-pretty">
+              Powerful features designed to help creators and teams manage their
+              social media more effectively.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* {features.map((feature, index) => (
+            <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <CardHeader>
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                  <feature.icon className="h-6 w-6 text-accent" />
+                </div>
+                <CardTitle className="text-xl">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base leading-relaxed">{feature.description}</CardDescription>
+              </CardContent>
+            </Card>
+          ))} */}
+          </div>
+        </div>
+      </section>
+
+      <LandingFooter />
+    </>
   );
 }
