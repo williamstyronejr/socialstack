@@ -1,25 +1,21 @@
+import EmailPassword from "../_components/EmailPassword";
 import SocialAuth from "../_components/SocialAuth";
 
-export default function Signup() {
+export default function SignUpPage() {
   return (
     <div className="flex h-screen w-screen items-center justify-center">
-      <div className="w-64 h-64 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold">Signup</h1>
-        <form>
-          <SocialAuth text="Signup" />
+      <div className="w-80 py-4 px-4 bg-white rounded-lg shadow-md border border-gray-300 space-y-4">
+        <h1 className="text-2xl font-bold text-center">Signup</h1>
 
-          <div className="flex flex-col gap-2">
-            <hr />
-            <p>Or</p>
-            <hr />
-          </div>
+        <SocialAuth text="Sign Up" />
 
-          <div className="flex flex-col gap-2">
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-          </div>
-        </form>
+        <div className="flex flex-row gap-2 items-center">
+          <hr className="flex-1 border-t border-gray-300" />
+          <p className="text-gray-500">or</p>
+          <hr className="flex-1 border-t border-gray-300" />
+        </div>
+
+        <EmailPassword type="signup" />
       </div>
     </div>
   );
