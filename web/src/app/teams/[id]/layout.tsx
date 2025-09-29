@@ -23,6 +23,7 @@ export default async function DashboardLayout({
     <SidebarProvider>
       <main className="flex flex-row w-full">
         <AppSidebar user={user} teamId={teamId} />
+
         <div className="bg-gray-100 grow">{children}</div>
       </main>
     </SidebarProvider>
