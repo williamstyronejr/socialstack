@@ -64,11 +64,11 @@ export default function AppSidebar({
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-
-        <SidebarFooter>
-          <UserButton user={user} />
-        </SidebarFooter>
       </SidebarContent>
+
+      <SidebarFooter>
+        <UserButton user={user} />
+      </SidebarFooter>
     </Sidebar>
   );
 }
