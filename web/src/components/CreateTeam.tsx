@@ -9,6 +9,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function CreateTeam() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -33,16 +34,24 @@ export default function CreateTeam() {
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div>
-            <div>
+            <div className="flex flex-col gap-4 pb-4">
               <Input name="team" type="text" placeholder="Team Name" />
+
+              <Textarea
+                name="description"
+                placeholder="Description"
+                className="h-24"
+              />
             </div>
 
-            <button
-              type="submit"
-              className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90"
-            >
-              Create Team
-            </button>
+            <div className="text-right">
+              <button
+                type="submit"
+                className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 cursor-pointer"
+              >
+                Create Team
+              </button>
+            </div>
           </div>
         </form>
       </DialogContent>
