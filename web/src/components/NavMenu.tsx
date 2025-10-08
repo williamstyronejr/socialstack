@@ -28,7 +28,7 @@ export default function NavMenu({ children }: { children: React.ReactNode }) {
       </button>
 
       <div
-        className={`bg-white h-screen px-8 pt-20 pb-6 z-10 absolute top-0 right-0 ${
+        className={`md:hidden bg-white h-screen px-8 pt-20 pb-6 z-10 absolute top-0 right-0 ${
           isOpen ? "block" : "hidden"
         }`}
       >
