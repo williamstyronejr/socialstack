@@ -1,7 +1,10 @@
+"use client";
+
 import { type User } from "better-auth";
 
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
-
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Calendar, Home, Inbox, Settings } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -11,6 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarFooter,
+  SidebarHeader,
 } from "@/components/ui/sidebar";
 import UserButton from "./UserButton";
 
@@ -23,7 +27,7 @@ const items = [
   },
   {
     title: "Projects",
-    url: "/",
+    url: "/projects",
     icon: Inbox,
   },
   {
@@ -45,19 +49,31 @@ export default function AppSidebar({
   user: User;
   teamId: string;
 }) {
+  const pathname = usePathname();
+
   return (
     <Sidebar>
-      <SidebarContent>
+      <SidebarContent className="px-4 py-2">
+        <SidebarHeader>
+          <Link href="/dashboard" className="text-2xl font-bold">
+            SocialStack
+          </Link>
+        </SidebarHeader>
+
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link
+                      href={`/teams/${teamId}${item.url}`}
+                      data-active={pathname === `/teams/${teamId}${item.url}`}
+                      className="data-[active=true]:bg-gray-200 px-2 py-1"
+                    >
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

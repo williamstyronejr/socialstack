@@ -10,11 +10,11 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
   params: {
-    teamId: string;
+    id: string;
   };
 }) {
   const headersList = await headers();
-  const { teamId } = await params;
+  const { id } = await params;
   const user = await getSessionUser(headersList);
 
   if (!user) return redirect("/signin");
@@ -22,7 +22,7 @@ export default async function DashboardLayout({
   return (
     <SidebarProvider>
       <main className="flex flex-row w-full">
-        <AppSidebar user={user} teamId={teamId} />
+        <AppSidebar user={user} teamId={id} />
 
         <div className="bg-gray-100 grow">{children}</div>
       </main>
