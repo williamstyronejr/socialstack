@@ -15,6 +15,15 @@ export const auth = betterAuth({
   }),
   appName: "socialstack",
   plugins: [nextCookies()],
+  user: {
+    deleteUser: {
+      enabled: true,
+      beforeDelete: async (user, request) => {
+        // TODO: Delete stripe customer and subscription
+        console.log(`User, ${user.id}, is being deleted`);
+      },
+    },
+  },
   emailAndPassword: {
     enabled: true,
   },
