@@ -28,7 +28,9 @@ export default async function DashboardPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-4">
         {teams.length === 0 && (
-          <div className="text-center text-gray-500">No teams found</div>
+          <div className="text-center text-gray-500 col-span-full text-lg font-medium">
+            No teams found
+          </div>
         )}
 
         <TeamList initialTeams={teams} />

@@ -5,6 +5,7 @@ import {
   QueryClientProvider,
   isServer,
 } from "@tanstack/react-query";
+import { ToastContainer } from "react-toastify";
 
 let browserClient: QueryClient | undefined = undefined;
 
@@ -31,6 +32,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <ToastContainer position="bottom-right" />
+    </QueryClientProvider>
   );
 }
