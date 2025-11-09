@@ -7,5 +7,9 @@ export const createTeamSchema = z.object({
 
 export const createProjectSchema = z.object({
   name: z.string().min(1),
+});
+
+export const createIdeaSchema = z.object({
+  name: z.string().min(1),
   description: z.string().optional(),
 });

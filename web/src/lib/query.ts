@@ -1,5 +1,5 @@
-import { count, eq } from "drizzle-orm";
-import { team, teamMember, project } from "./schema";
+import { count, eq, asc } from "drizzle-orm";
+import { team, teamMember, project, task, idea } from "./schema";
 import db from "./db";
 
 const query = {
@@ -39,6 +39,33 @@ const query = {
 
         return teamData;
       }),
+  },
+  ideas: {
+    getIdeasByTeamId: async (teamId: string) =>
+      await db
+        .select()
+        .from(idea)
+        .where(eq(idea.teamId, teamId))
+        .orderBy(asc(idea.createdAt)),
+  },
+  projects: {
+    getProjectsByTeamId: async (teamId: string) =>
+      await db
+        .select({
+          id: project.id,
+          name: project.name,
+          description: project.description,
+          priority: project.priority,
+          dueDate: project.dueDate,
+          createdAt: project.createdAt,
+          updatedAt: project.updatedAt,
+          taskCount: count(task.id),
+        })
+        .from(project)
+        .where(eq(project.teamId, teamId))
+        .leftJoin(task, eq(project.id, task.projectId))
+        .groupBy(project.id, task.id)
+        .orderBy(asc(project.createdAt)),
   },
 };
 

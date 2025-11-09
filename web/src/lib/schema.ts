@@ -5,6 +5,7 @@ import {
   timestamp,
   boolean,
   primaryKey,
+  integer,
 } from "drizzle-orm/pg-core";
 
 export const team = pgTable("team", {
@@ -44,9 +45,44 @@ export const project = pgTable("project", {
     .default(sql`gen_random_uuid()`),
   name: text("name").notNull(),
   description: text("description"),
+  priority: text("priority").notNull().default("none"),
   teamId: text("team_id")
     .notNull()
     .references(() => team.id, { onDelete: "cascade" }),
+  dueDate: timestamp("due_date"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const task = pgTable("task", {
+  id: text("id")
+    .primaryKey()
+    .notNull()
+    .default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  description: text("description"),
+  status: text("status").notNull().default("todo"),
+  order: integer("order").notNull().default(0),
+  projectId: text("project_id")
+    .notNull()
+    .references(() => project.id, { onDelete: "cascade" }),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const idea = pgTable("idea", {
+  id: text("id")
+    .primaryKey()
+    .notNull()
+    .default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  description: text("description").notNull().default(""),
+  teamId: text("team_id")
+    .notNull()
+    .references(() => team.id, { onDelete: "cascade" }),
+  creatorId: text("creator_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
