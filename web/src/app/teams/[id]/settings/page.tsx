@@ -1,4 +1,12 @@
-export default function TeamSettingsPage() {
+import DeleteForms from "./DeleteForms";
+
+export default async function TeamSettingsPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id: teamId } = await params;
+
   return (
     <section>
       <header className="mb-4 bg-white p-4 border-b border-gray-200">
@@ -15,7 +23,9 @@ export default function TeamSettingsPage() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold">Team</h2>
+          <h2 className="text-2xl font-bold"></h2>
+
+          <DeleteForms teamId={teamId} />
         </div>
       </div>
     </section>
