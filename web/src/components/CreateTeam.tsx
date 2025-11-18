@@ -26,9 +26,6 @@ export default function CreateTeam() {
       const validationResult = createTeamSchema.safeParse(data);
 
       if (!validationResult.success) {
-        // console.log(z.treeifyError(validationResult.error));
-        console.log(z.treeifyError(validationResult.error).properties);
-
         return {
           errors: z.treeifyError(validationResult.error).properties,
         };
