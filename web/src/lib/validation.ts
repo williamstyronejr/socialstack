@@ -5,11 +5,21 @@ export const createTeamSchema = z.object({
   description: z.string().optional(),
 });
 
+export const updateTeamSchema = z.object({
+  name: z.string().min(1).optional(),
+  description: z.string().optional(),
+});
+
 export const createProjectSchema = z.object({
   name: z.string().min(1),
 });
 
 export const createIdeaSchema = z.object({
   name: z.string().min(1),
+  description: z.string().optional(),
+});
+
+export const updateIdeaSchema = z.object({
+  name: z.string().min(1).optional(),
   description: z.string().optional(),
 });
