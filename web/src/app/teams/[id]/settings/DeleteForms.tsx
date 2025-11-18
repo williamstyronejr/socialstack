@@ -44,9 +44,14 @@ function DeleteDataForm({ teamId }: { teamId: string }) {
 
   return (
     <div>
-      <h2>Delete Data</h2>
+      <div className="pb-4">
+        <h2 className="text-xl font-bold">Delete Data</h2>
+        <div className="text-sm text-gray-500">
+          This will delete all data for this team. This action cannot be undone.
+        </div>
+      </div>
 
-      <div className="">
+      <div className="pb-4">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger className="text-right cursor-pointer bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
             Delete Data
@@ -106,7 +111,14 @@ function DeleteTeamForm({ teamId }: { teamId: string }) {
 
   return (
     <div>
-      <h2>Delete Team</h2>
+      <div className="pb-4">
+        <h2 className="text-xl font-bold ">Delete Team</h2>
+
+        <div className="text-sm text-slate-500">
+          This action cannot be undone. All data associated with the team will
+          be permanently deleted.
+        </div>
+      </div>
 
       <div className="">
         <Dialog open={open} onOpenChange={setOpen}>
