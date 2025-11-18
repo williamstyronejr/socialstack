@@ -1,9 +1,13 @@
 import { count, eq, asc } from "drizzle-orm";
-import { team, teamMember, project, task, idea } from "./schema";
+import { team, teamMember, project, task, idea, user } from "./schema";
 import db from "./db";
 
 const query = {
   teams: {
+    getTeamById: async (teamId: string) =>
+      db.query.team.findFirst({
+        where: eq(team.id, teamId),
+      }),
     getTeams: async (userId: string) =>
       await db
         .select({
@@ -39,6 +43,19 @@ const query = {
 
         return teamData;
       }),
+  },
+  members: {
+    getByTeamId: async (teamId: string) =>
+      db
+        .select({
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: teamMember.role,
+        })
+        .from(teamMember)
+        .leftJoin(user, eq(teamMember.userId, user.id))
+        .where(eq(teamMember.teamId, teamId)),
   },
   ideas: {
     getIdeasByTeamId: async (teamId: string) =>
